@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Đăng bán tài khoản | TrungNi Shop</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/seller.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+<a href="index.html">TrungNi Shop</a>
+</div>
+
+<nav class="menu">
+
+<a href="index.html">🏠 Trang chủ</a>
+
+<a href="shop.html">🛒 Shop</a>
+
+<a href="market.html">📦 Chợ tài khoản</a>
+
+<a href="seller-dashboard.html">🏪 Seller</a>
+
+</nav>
+
+<div class="user-menu">
+
+<div class="user-info">
+
+👤 <span id="sellerName">Seller</span>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="seller-dashboard">
+
+<h1>📦 Đăng bán tài khoản</h1>
+
+<form id="productForm" class="seller-form">
+
+<label>Tên sản phẩm</label>
+<input
+type="text"
+id="name"
+placeholder="Ví dụ: Acc Free Fire VIP"
+required>
+
+<label>Danh mục</label>
+
+<select id="category">
+
+<option value="Free Fire">🔥 Free Fire</option>
+
+<option value="Liên Quân">⚔ Liên Quân</option>
+
+<option value="Roblox">🎮 Roblox</option>
+
+<option value="Minecraft">🧱 Minecraft</option>
+
+<option value="UgPhone">📱 UgPhone</option>
+
+<option value="VMOS Cloud">☁️ VMOS Cloud</option>
+
+<option value="VSPhone">📲 VSPhone</option>
+
+</select>
+
+<label>Giá bán</label>
+
+<input
+type="number"
+id="price"
+placeholder="100000"
+required>
+
+<label>Mô tả</label>
+
+<textarea
+id="description"
+rows="5"
+placeholder="Thông tin tài khoản..."
+required></textarea>
+
+<label>Ảnh sản phẩm</label>
+
+<input
+type="file"
+id="image"
+accept="image/*">
+
+<button
+type="submit"
+class="btn">
+
+🚀 Đăng bán
+
+</button>
+
+</form>
+
+</section>
+
+<script type="module" src="js/product.js"></script>
+
+</body>
+</html>
