@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seller Dashboard - TrungNi Shop</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/seller.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+<a href="index.html">TrungNi Shop</a>
+</div>
+
+<nav class="menu">
+
+<a href="index.html">🏠 Trang chủ</a>
+
+<a href="shop.html">🛒 Shop</a>
+
+<a href="market.html">📦 Chợ tài khoản</a>
+
+<a href="product-add.html">➕ Đăng bán</a>
+
+</nav>
+
+<div class="user-menu">
+
+<div class="user-info">
+
+👤 <span id="sellerName">Seller</span>
+
+</div>
+
+<button class="icon-btn">🔔</button>
+
+<div class="dropdown">
+
+<button class="icon-btn">⚙️</button>
+
+<div class="dropdown-menu">
+
+<a href="account.html">👤 Hồ sơ</a>
+
+<a href="#" id="logoutBtn">🚪 Đăng xuất</a>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="seller-dashboard">
+
+<div class="dashboard-header">
+
+<h1>🏪 Seller Dashboard</h1>
+
+<a href="product-add.html" class="btn">
+➕ Đăng sản phẩm
+</a>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h3>Tổng sản phẩm</h3>
+
+<p id="totalProducts">0</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Đơn hàng</h3>
+
+<p id="totalOrders">0</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Doanh thu</h3>
+
+<p id="totalMoney">0đ</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Trạng thái</h3>
+
+<p id="sellerStatus">Đang kiểm tra...</p>
+
+</div>
+
+</div>
+
+<h2>📦 Sản phẩm của bạn</h2>
+
+<div id="productList" class="product-grid">
+
+</div>
+
+</section>
+
+<script type="module" src="js/seller.js"></script>
+
+</body>
+</html>
