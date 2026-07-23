@@ -1,90 +1,72 @@
-import { auth, db } from './firebase.js';
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+    auth,
+    db,
+    provider,
+    signInWithPopup,
+    signOut,
+    onAuthStateChanged,
+    doc,
+    getDoc,
+    setDoc
+} from "./firebase.js";
 
-import {
-  doc,
-  setDoc,
-  getDoc
-} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-
-// ===== ĐĂNG KÝ =====
-const registerForm = document.getElementById('registerForm');
-
-if (registerForm) {
-  registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
+// Đăng nhập Google
+window.loginGoogle = async function () {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const result = await signInWithPopup(auth, provider);
 
-      await setDoc(doc(db, 'users', userCredential.user.uid), {
-        uid: userCredential.user.uid,
-        name,
-        email,
-        role: 'user',
-        balance: 0,
-        createdAt: new Date()
-      });
+        const user = result.user;
 
-      alert('Đăng ký thành công!');
-      window.location.href = 'login.html';
+        const userRef = doc(db, "users", user.uid);
 
-    } catch (error) {
-      alert(error.message);
+        const snap = await getDoc(userRef);
+
+        if (!snap.exists()) {
+            await setDoc(userRef, {
+                uid: user.uid,
+                name: user.displayName,
+                email: user.email,
+                avatar: user.photoURL,
+                balance: 50000,
+                role: "member",
+                seller: false,
+                createdAt: new Date()
+            });
+        }
+
+        window.location.href = "index.html";
+
+    } catch (e) {
+        alert(e.message);
     }
-  });
-}
-
-// ===== ĐĂNG NHẬP =====
-const loginForm = document.getElementById('loginForm');
-
-if (loginForm) {
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-
-      alert('Đăng nhập thành công!');
-      window.location.href = 'profile.html';
-
-    } catch (error) {
-      alert('Sai email hoặc mật khẩu!');
-    }
-  });
-}
-
-// ===== KIỂM TRA ĐĂNG NHẬP =====
-onAuthStateChanged(auth, async (user) => {
-  const profileName = document.getElementById('profileName');
-  const profileEmail = document.getElementById('profileEmail');
-
-  if (user && profileName && profileEmail) {
-    const docRef = doc(db, 'users', user.uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      const data = docSnap.data();
-      profileName.textContent = data.name;
-      profileEmail.textContent = data.email;
-    }
-  }
-});
-
-// ===== ĐĂNG XUẤT =====
-window.logout = async function () {
-  await signOut(auth);
-  window.location.href = 'index.html';
 };
+
+// Đăng xuất
+window.logout = async function () {
+    await signOut(auth);
+    window.location.href = "login.html";
+};
+
+// Kiểm tra đăng nhập
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) return;
+
+    const snap = await getDoc(doc(db, "users", user.uid));
+
+    if (!snap.exists()) return;
+
+    const data = snap.data();
+
+    const name = document.getElementById("userName");
+    const money = document.getElementById("userMoney");
+    const avatar = document.getElementById("userAvatar");
+
+    if (name) name.innerText = data.name;
+    if (money) money.innerText = data.balance.toLocaleString() + "đ";
+
+    if (avatar && data.avatar) {
+        avatar.src = data.avatar;
+    }
+
+});
