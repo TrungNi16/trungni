@@ -36,81 +36,51 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
 
 const firebaseConfig = {
-
-    apiKey: "AIzaSyCghsuyQOhK6EYM5tyMVeMyMORE-yy79UE",
-
+    apiKey: "YOUR_API_KEY",
     authDomain: "trungni.firebaseapp.com",
-
     projectId: "trungni",
-
     storageBucket: "trungni.firebasestorage.app",
-
     messagingSenderId: "195760563004",
-
     appId: "1:195760563004:web:30b4c6a98eee4be1a23439"
-
 };
 
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
-
 await setPersistence(auth, browserLocalPersistence);
 
 const db = getFirestore(app);
-
 const storage = getStorage(app);
-
 const provider = new GoogleAuthProvider();
 
 export {
+    auth,
+    db,
+    storage,
+    provider,
 
-auth,
+    signOut,
+    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signInWithPopup,
 
-db,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+    deleteDoc,
 
-storage,
+    collection,
+    addDoc,
+    getDocs,
 
-provider,
+    serverTimestamp,
+    query,
+    where,
 
-signOut,
-
-onAuthStateChanged,
-
-createUserWithEmailAndPassword,
-
-signInWithEmailAndPassword,
-
-signInWithPopup,
-
-doc,
-
-getDoc,
-
-setDoc,
-
-updateDoc,
-
-deleteDoc,
-
-collection,
-
-addDoc,
-
-getDocs,
-
-serverTimestamp,
-
-query,
-
-where,
-
-ref,
-
-uploadBytes,
-
-getDownloadURL,
-
-deleteObject
-
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
 };
