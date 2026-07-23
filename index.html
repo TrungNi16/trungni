@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header class="navbar">
+<header>
 
     <div class="logo">
         <a href="index.html">TrungNi Shop</a>
@@ -28,7 +27,7 @@
 
         <div class="user-info">
             👤 <span id="userName">TrungNi</span>
-               <span class="money" id="userMoney">💰 0đ</span>
+            <span class="money" id="userMoney">💰 0đ</span>
         </div>
 
         <button class="icon-btn">🔔</button>
@@ -62,75 +61,88 @@
 
 </section>
 
-<section class="games">
+<section>
 
-    <h2>Danh mục</h2>
+<h2>Danh mục</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
-            <h3>🔥 Free Fire</h3>
-        </div>
+    <a class="card" href="shop.html?game=freefire">
+        <h3>🔥 Free Fire</h3>
+    </a>
 
-        <div class="card">
-            <h3>⚔ Liên Quân</h3>
-        </div>
+    <a class="card" href="shop.html?game=lienquan">
+        <h3>⚔ Liên Quân</h3>
+    </a>
 
-        <div class="card">
-            <h3>🎮 Roblox</h3>
-        </div>
+    <a class="card" href="shop.html?game=roblox">
+        <h3>🎮 Roblox</h3>
+    </a>
 
-        <div class="card">
-            <h3>🧱 Minecraft</h3>
-        </div>
+    <a class="card" href="shop.html?game=minecraft">
+        <h3>🧱 Minecraft</h3>
+    </a>
 
-        <div class="card">
-            <h3>📱 UgPhone Cloud</h3>
-        </div>
+    <a class="card" href="shop.html?game=ugphone">
+        <h3>📱 UgPhone Cloud</h3>
+    </a>
 
-        <div class="card">
-            <h3>☁️ VMOS Cloud</h3>
-        </div>
+    <a class="card" href="shop.html?game=vmos">
+        <h3>☁️ VMOS Cloud</h3>
+    </a>
 
-        <div class="card">
-            <h3>📲 VSPhone Cloud</h3>
-        </div>
+    <a class="card" href="shop.html?game=vsphone">
+        <h3>📲 VSPhone Cloud</h3>
+    </a>
 
-    </div>
-
-</section>
-
-<section class="feature">
-
-    <h2>Tại sao chọn TrungNi Shop?</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>✅ Giao dịch tự động</h3>
-        </div>
-
-        <div class="card">
-            <h3>🛡️ Bảo hành tài khoản</h3>
-        </div>
-
-        <div class="card">
-            <h3>💬 Hỗ trợ 24/7</h3>
-        </div>
-
-        <div class="card">
-            <h3>⭐ Seller uy tín</h3>
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-<footer>
-    © 2026 TrungNi Shop - TN Uy tín làm nên thương hiệu
-</footer>
+<section>
+
+<h2>Tại sao chọn TrungNi Shop?</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>✅ Giao dịch tự động</h3>
+    </div>
+
+    <div class="card">
+        <h3>🛡️ Bảo hành tài khoản</h3>
+    </div>
+
+    <div class="card">
+        <h3>💬 Hỗ trợ 24/7</h3>
+    </div>
+
+    <div class="card">
+        <h3>⭐ Seller uy tín</h3>
+    </div>
+
+</div>
+
+</section>
+
+<script>
+// Hiển thị số dư
+let money = Number(localStorage.getItem("money")) || 0;
+
+document.getElementById("userMoney").textContent =
+    "💰 " + money.toLocaleString("vi-VN") + "đ";
+
+// Đăng xuất
+document.getElementById("logoutBtn").onclick = function(e){
+    e.preventDefault();
+
+    localStorage.removeItem("money");
+
+    alert("Đã đăng xuất!");
+
+    location.reload();
+};
+</script>
 
 </body>
 </html>
-<script src="js/app.js"></script>
-</body>
