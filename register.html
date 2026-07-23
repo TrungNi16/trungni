@@ -1,49 +1,140 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đăng ký - TrungNi Shop</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Đăng ký - TrungNi Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.register-box{
+width:430px;
+background:#1e293b;
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,.35);
+}
+
+.logo{
+font-size:42px;
+text-align:center;
+margin-bottom:10px;
+}
+
+h2{
+color:#fff;
+text-align:center;
+margin-bottom:30px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-bottom:16px;
+background:#334155;
+border:none;
+border-radius:12px;
+color:#fff;
+font-size:15px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#2563eb;
+border:none;
+border-radius:12px;
+color:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.bottom{
+margin-top:20px;
+text-align:center;
+color:#cbd5e1;
+}
+
+.bottom a{
+color:#60a5fa;
+text-decoration:none;
+}
+
+.bottom a:hover{
+text-decoration:underline;
+}
+
+</style>
+
 </head>
+
 <body>
 
-<div class="auth-container">
-  <form id="registerForm" class="auth-card">
+<div class="register-box">
 
-    <h1>📝 Đăng ký</h1>
+<div class="logo">🎮</div>
 
-    <input
-      type="text"
-      id="name"
-      placeholder="Họ và tên"
-      required
-    >
+<h2>Đăng ký TrungNi Shop</h2>
 
-    <input
-      type="email"
-      id="email"
-      placeholder="Email"
-      required
-    >
+<input
+type="text"
+id="name"
+placeholder="Tên hiển thị">
 
-    <input
-      type="password"
-      id="password"
-      placeholder="Mật khẩu"
-      required
-    >
+<input
+type="email"
+id="email"
+placeholder="Email">
 
-    <button type="submit">Tạo tài khoản</button>
+<input
+type="password"
+id="password"
+placeholder="Mật khẩu">
 
-    <p>
-      Đã có tài khoản?
-      <a href="login.html">Đăng nhập</a>
-    </p>
+<input
+type="password"
+id="confirmPassword"
+placeholder="Nhập lại mật khẩu">
 
-  </form>
+<button onclick="register()">
+Đăng ký
+</button>
+
+<div class="bottom">
+Đã có tài khoản?
+<a href="login.html">
+Đăng nhập
+</a>
+</div>
+
 </div>
 
 <script type="module" src="js/auth.js"></script>
+
 </body>
 </html>
