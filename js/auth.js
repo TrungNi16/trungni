@@ -1,28 +1,122 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+
 import {
-    auth,
-    db,
-    provider,
+    getAuth,
+    GoogleAuthProvider,
     signInWithPopup,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
-    doc,
-    getDoc,
-    setDoc
-} from "./firebase.js";
+    setPersistence,
+    browserLocalPersistence
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-// Đăng nhập Google
-window.loginGoogle = async function () {
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCghsuyQOhK6EYM5tyMVeMyMORE-yy79UE",
+    authDomain: "trungni.firebaseapp.com",
+    projectId: "trungni",
+    storageBucket: "trungni.firebasestorage.app",
+    messagingSenderId: "195760563004",
+    appId: "1:195760563004:web:30b4c6a98eee4be1a23439"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
+
+await setPersistence(auth, browserLocalPersistence);
+
+// ================= ĐĂNG KÝ =================
+window.register = async function () {
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!name || !email || !password) {
+        alert("Vui lòng nhập đầy đủ thông tin.");
+        return;
+    }
+
     try {
+
+        const userCredential =
+            await createUserWithEmailAndPassword(auth, email, password);
+
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "users", user.uid), {
+
+            uid: user.uid,
+            name: name,
+            email: email,
+            balance: 50000,
+            role: "member",
+            seller: false,
+            avatar: "",
+            createdAt: Date.now()
+
+        });
+
+        alert("Đăng ký thành công!");
+
+        location.href = "index.html";
+
+    } catch (e) {
+
+        alert(e.message);
+
+    }
+
+};
+
+// ================= ĐĂNG NHẬP EMAIL =================
+window.loginEmail = async function () {
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+
+        await signInWithEmailAndPassword(auth, email, password);
+
+        location.href = "index.html";
+
+    } catch (e) {
+
+        alert("Sai email hoặc mật khẩu.");
+
+    }
+
+};
+
+// ================= ĐĂNG NHẬP GOOGLE =================
+window.loginGoogle = async function () {
+
+    try {
+
         const result = await signInWithPopup(auth, provider);
 
         const user = result.user;
 
-        const userRef = doc(db, "users", user.uid);
+        const ref = doc(db, "users", user.uid);
 
-        const snap = await getDoc(userRef);
+        const snap = await getDoc(ref);
 
         if (!snap.exists()) {
-            await setDoc(userRef, {
+
+            await setDoc(ref, {
+
                 uid: user.uid,
                 name: user.displayName,
                 email: user.email,
@@ -30,24 +124,23 @@ window.loginGoogle = async function () {
                 balance: 50000,
                 role: "member",
                 seller: false,
-                createdAt: new Date()
+                createdAt: Date.now()
+
             });
+
         }
 
-        window.location.href = "index.html";
+        location.href = "index.html";
 
     } catch (e) {
+
         alert(e.message);
+
     }
+
 };
 
-// Đăng xuất
-window.logout = async function () {
-    await signOut(auth);
-    window.location.href = "login.html";
-};
-
-// Kiểm tra đăng nhập
+// ================= KIỂM TRA ĐĂNG NHẬP =================
 onAuthStateChanged(auth, async (user) => {
 
     if (!user) return;
@@ -60,13 +153,18 @@ onAuthStateChanged(auth, async (user) => {
 
     const name = document.getElementById("userName");
     const money = document.getElementById("userMoney");
-    const avatar = document.getElementById("userAvatar");
 
-    if (name) name.innerText = data.name;
-    if (money) money.innerText = data.balance.toLocaleString() + "đ";
+    if (name) name.innerHTML = data.name;
 
-    if (avatar && data.avatar) {
-        avatar.src = data.avatar;
-    }
+    if (money) money.innerHTML = Number(data.balance).toLocaleString() + "đ";
 
 });
+
+// ================= ĐĂNG XUẤT =================
+window.logout = async function () {
+
+    await signOut(auth);
+
+    location.href = "login.html";
+
+};
