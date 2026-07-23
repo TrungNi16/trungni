@@ -42,10 +42,12 @@ ${Number(p.price).toLocaleString()}đ
 
 <td>
 
+<button onclick="location.href='edit-product.html?id=${item.id}'">
+✏️ Sửa
+</button>
+
 <button onclick="deleteProduct('${item.id}')">
-
 🗑 Xóa
-
 </button>
 
 </td>
