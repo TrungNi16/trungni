@@ -1,187 +1,107 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Đăng nhập - TrungNi Shop</title>
+<title>Đăng nhập | TrungNi Shop</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
 
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
-
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#0f172a;
-}
-
-.login-box{
-
-width:420px;
-
-background:#1e293b;
-
-padding:40px;
-
-border-radius:20px;
-
-box-shadow:0 0 30px rgba(0,0,0,.4);
-
-}
-
-.logo{
-
-font-size:36px;
-
-text-align:center;
-
-margin-bottom:10px;
-
-}
-
-h2{
-
-text-align:center;
-
-margin-bottom:30px;
-
-color:white;
-
-}
-
-input{
-
-width:100%;
-
-padding:14px;
-
-margin-bottom:18px;
-
-border:none;
-
-border-radius:12px;
-
-background:#334155;
-
-color:white;
-
-font-size:15px;
-
-outline:none;
-
-}
-
-button{
-
-width:100%;
-
-padding:14px;
-
-border:none;
-
-border-radius:12px;
-
-font-size:16px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-margin-bottom:15px;
-
-transition:.3s;
-
-}
-
-.login{
-
-background:#2563eb;
-
-color:white;
-
-}
-
-.login:hover{
-
-background:#1d4ed8;
-
-}
-
-.google{
-
-background:white;
-
-color:#111;
-
-}
-
-.google:hover{
-
-background:#e5e5e5;
-
-}
-
-a{
-
-color:#60a5fa;
-
-text-decoration:none;
-
-}
-
-.bottom{
-
-margin-top:15px;
-
-text-align:center;
-
-color:#ddd;
-
-}
-
-</style>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="login-box">
+<div class="auth-page">
 
-<div class="logo">🎮</div>
+<div class="auth-box">
 
-<h2>Đăng nhập TrungNi Shop</h2>
+<div class="auth-logo">
+
+<img src="img/logo.png">
+
+<h1>Trung<span>Ni</span> Shop</h1>
+
+</div>
+
+<h2 class="auth-title">
+
+Đăng nhập
+
+</h2>
+
+<p class="auth-subtitle">
+
+Chào mừng bạn quay trở lại
+
+</p>
+
+<form id="loginForm">
+
+<div class="form-group">
+
+<label>Email</label>
 
 <input
 type="email"
-placeholder="Email">
+id="email"
+placeholder="Nhập Email"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Mật khẩu</label>
+
+<div class="password-box">
 
 <input
 type="password"
-placeholder="Mật khẩu">
+id="password"
+placeholder="Nhập mật khẩu"
+required>
 
-<button class="login">
+<i class="fa-solid fa-eye" id="togglePassword"></i>
+
+</div>
+
+</div>
+
+<button class="auth-btn" type="submit">
 
 Đăng nhập
 
 </button>
 
-<button class="google" onclick="loginGoogle()">
+</form>
 
-🔵 Đăng nhập bằng Google
+<div class="divider">
+
+HOẶC
+
+</div>
+
+<button class="google-btn" id="googleLogin">
+
+<img
+src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+width="22">
+
+Đăng nhập bằng Google
 
 </button>
 
-<div class="bottom">
+<div class="auth-footer">
 
 Chưa có tài khoản?
 
@@ -195,7 +115,9 @@ Chưa có tài khoản?
 
 </div>
 
-<script type="module" src="js/auth.js"></script>
+</div>
+
+<script type="module" src="js/login.js"></script>
 
 </body>
 
