@@ -1,55 +1,266 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop - TrungNi Shop</title>
-  <link rel="stylesheet" href="css/style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shop | TrungNi Shop</title>
+
+<link rel="icon" href="img/logo.png">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/shop.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
+
 <body>
+  <header>
 
-<header class="topbar">
-  <h2>🎮 TrungNi Shop</h2>
-  <a href="index.html">Trang chủ</a>
+<div class="container navbar">
+
+<a href="index.html" class="logo">
+
+Trung<span>Ni</span> Shop
+
+</a>
+
+<nav class="menu">
+
+<a href="index.html">Trang chủ</a>
+
+<a href="shop.html">Shop</a>
+
+<a href="market.html">Chợ tài khoản</a>
+
+<a href="seller-dashboard.html">Seller</a>
+
+<a href="admin.html">Admin</a>
+
+</nav>
+
+<div class="nav-right">
+
+<div class="coin-box">
+
+💰 <span id="balance">0 VNĐ</span>
+
+</div>
+
+<a href="login.html" class="btn">
+
+Đăng nhập
+
+</a>
+
+</div>
+
+</div>
+
 </header>
+<section class="shop-header">
 
-<section class="shop-section">
+<div class="container">
 
-  <h1>🛒 Shop Tài Khoản Game</h1>
+<h1>
 
-  <div class="search-box">
-    <input type="text" placeholder="Tìm kiếm tài khoản...">
-  </div>
+🛒 Shop Tài Khoản
 
-  <div class="product-grid">
+</h1>
 
-    <div class="product-card">
-      <div class="product-image">🔥</div>
-      <h3>Free Fire VIP</h3>
-      <p>Full skin • Rank Huyền Thoại</p>
-      <div class="price">250.000đ</div>
-      <button>Mua ngay</button>
+<p>
+
+Hơn 50.000 tài khoản chất lượng
+
+</p>
+
+<div class="shop-search">
+
+<input
+
+type="text"
+
+id="search"
+
+placeholder="Tìm kiếm sản phẩm...">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+</div>
+
+</div>
+
+</section>
+<!-- =====================================
+        BỘ LỌC SẢN PHẨM
+====================================== -->
+
+<section class="filter">
+
+    <div class="container">
+
+        <div class="filter-list">
+
+            <button class="filter-btn active" data-category="all">
+                🔥 Tất cả
+            </button>
+
+            <button class="filter-btn" data-category="freefire">
+                🔥 Free Fire
+            </button>
+
+            <button class="filter-btn" data-category="lienquan">
+                ⚔️ Liên Quân
+            </button>
+
+            <button class="filter-btn" data-category="roblox">
+                🎮 Roblox
+            </button>
+
+            <button class="filter-btn" data-category="minecraft">
+                ⛏️ Minecraft
+            </button>
+
+            <button class="filter-btn" data-category="ugphone">
+                📱 UgPhone
+            </button>
+
+            <button class="filter-btn" data-category="vmos">
+                ☁️ VMOS Cloud
+            </button>
+
+            <button class="filter-btn" data-category="vsphone">
+                📲 VSPhone
+            </button>
+
+        </div>
+
     </div>
-
-    <div class="product-card">
-      <div class="product-image">⚔️</div>
-      <h3>Liên Quân Cao Thủ</h3>
-      <p>100+ tướng • 200+ skin</p>
-      <div class="price">450.000đ</div>
-      <button>Mua ngay</button>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">🎮</div>
-      <h3>Roblox Blox Fruits</h3>
-      <p>Max Level • Fruit Hiếm</p>
-      <div class="price">180.000đ</div>
-      <button>Mua ngay</button>
-    </div>
-
-  </div>
 
 </section>
 
+<!-- =====================================
+        DANH SÁCH SẢN PHẨM
+====================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div id="product-list" class="product-grid">
+
+            <!-- shop.js sẽ tự tạo sản phẩm ở đây -->
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+        PHÂN TRANG
+====================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div class="pagination">
+
+            <button class="page-btn active">
+                1
+            </button>
+
+            <button class="page-btn">
+                2
+            </button>
+
+            <button class="page-btn">
+                3
+            </button>
+
+            <button class="page-btn">
+                »
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>TrungNi Shop</h3>
+
+<p>
+
+Shop tài khoản Game và Cloud Phone.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Liên kết</h3>
+
+<a href="index.html">Trang chủ</a>
+
+<a href="shop.html">Shop</a>
+
+<a href="market.html">Chợ tài khoản</a>
+
+</div>
+
+<div>
+
+<h3>Hỗ trợ</h3>
+
+<a href="#">Điều khoản</a>
+
+<a href="#">Liên hệ</a>
+
+</div>
+
+<div>
+
+<h3>Mạng xã hội</h3>
+
+<a href="#">Facebook</a>
+
+<a href="#">Discord</a>
+
+<a href="#">TikTok</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 TrungNi Shop
+
+</div>
+
+</div>
+
+</footer>
+
+<script type="module" src="js/shop.js"></script>
+
 </body>
+
 </html>
