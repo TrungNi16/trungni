@@ -1,170 +1,53 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-
 import {
-    getAuth,
-    GoogleAuthProvider,
-    signInWithPopup,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
+    auth,
+    db,
     signOut,
     onAuthStateChanged,
-    setPersistence,
-    browserLocalPersistence
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-import {
-    getFirestore,
     doc,
-    setDoc,
     getDoc
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+} from "./firebase.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCghsuyQOhK6EYM5tyMVeMyMORE-yy79UE",
-    authDomain: "trungni.firebaseapp.com",
-    projectId: "trungni",
-    storageBucket: "trungni.firebasestorage.app",
-    messagingSenderId: "195760563004",
-    appId: "1:195760563004:web:30b4c6a98eee4be1a23439"
-};
+const guestMenu = document.getElementById("guestMenu");
+const userMenu = document.getElementById("userMenu");
+const userName = document.getElementById("userName");
+const logoutBtn = document.getElementById("logoutBtn");
+const balance = document.getElementById("user-balance");
 
-const app = initializeApp(firebaseConfig);
+onAuthStateChanged(auth, async (user) => {
 
-const auth = getAuth(app);
-const db = getFirestore(app);
-const provider = new GoogleAuthProvider();
+    if (user) {
 
-await setPersistence(auth, browserLocalPersistence);
+        guestMenu.style.display = "none";
+        userMenu.style.display = "flex";
 
-// ================= ĐĂNG KÝ =================
-window.register = async function () {
+        const snap = await getDoc(doc(db, "users", user.uid));
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+        if (snap.exists()) {
 
-    if (!name || !email || !password) {
-        alert("Vui lòng nhập đầy đủ thông tin.");
-        return;
-    }
+            const data = snap.data();
 
-    try {
+            userName.textContent = "👋 " + data.fullname;
 
-        const userCredential =
-            await createUserWithEmailAndPassword(auth, email, password);
-
-        const user = userCredential.user;
-
-        await setDoc(doc(db, "users", user.uid), {
-
-            uid: user.uid,
-            name: name,
-            email: email,
-            balance: 50000,
-            role: "member",
-            seller: false,
-            avatar: "",
-            createdAt: Date.now()
-
-        });
-
-        alert("Đăng ký thành công!");
-
-        location.href = "index.html";
-
-    } catch (e) {
-
-        alert(e.message);
-
-    }
-
-};
-
-// ================= ĐĂNG NHẬP EMAIL =================
-window.loginEmail = async function () {
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    try {
-
-        await signInWithEmailAndPassword(auth, email, password);
-
-        location.href = "index.html";
-
-    } catch (e) {
-
-        alert("Sai email hoặc mật khẩu.");
-
-    }
-
-};
-
-// ================= ĐĂNG NHẬP GOOGLE =================
-window.loginGoogle = async function () {
-
-    try {
-
-        const result = await signInWithPopup(auth, provider);
-
-        const user = result.user;
-
-        const ref = doc(db, "users", user.uid);
-
-        const snap = await getDoc(ref);
-
-        if (!snap.exists()) {
-
-            await setDoc(ref, {
-
-                uid: user.uid,
-                name: user.displayName,
-                email: user.email,
-                avatar: user.photoURL,
-                balance: 50000,
-                role: "member",
-                seller: false,
-                createdAt: Date.now()
-
-            });
+            balance.textContent =
+                Number(data.balance || 0).toLocaleString() + " VNĐ";
 
         }
 
-        location.href = "index.html";
+    } else {
 
-    } catch (e) {
+        guestMenu.style.display = "flex";
+        userMenu.style.display = "none";
 
-        alert(e.message);
+        balance.textContent = "0 VNĐ";
 
     }
 
-};
-
-// ================= KIỂM TRA ĐĂNG NHẬP =================
-onAuthStateChanged(auth, async (user) => {
-
-    if (!user) return;
-
-    const snap = await getDoc(doc(db, "users", user.uid));
-
-    if (!snap.exists()) return;
-
-    const data = snap.data();
-
-    const name = document.getElementById("userName");
-    const money = document.getElementById("userMoney");
-
-    if (name) name.innerHTML = data.name;
-
-    if (money) money.innerHTML = Number(data.balance).toLocaleString() + "đ";
-
 });
 
-// ================= ĐĂNG XUẤT =================
-window.logout = async function () {
+logoutBtn?.addEventListener("click", async () => {
 
     await signOut(auth);
 
-    location.href = "login.html";
+    location.href = "index.html";
 
-};
+});
