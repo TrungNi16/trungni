@@ -1,1050 +1,419 @@
-/* ===========================
-   RESET
-=========================== */
+/* ===============================
+   TrungNi Shop - style.css
+   Phiên bản: V3
+================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+
+--primary:#2563eb;
+--primary2:#3b82f6;
+--green:#22c55e;
+--yellow:#facc15;
+--red:#ef4444;
+
+--bg:#0b1120;
+--card:#111827;
+--card2:#1e293b;
+
+--text:#ffffff;
+--text2:#cbd5e1;
+
+--border:rgba(255,255,255,.08);
+
+--radius:18px;
+
+--shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
 
 html{
-    scroll-behavior:smooth;
+
+scroll-behavior:smooth;
+
 }
 
 body{
-    background:#0b1120;
-    color:#fff;
-    overflow-x:hidden;
+
+font-family:"Be Vietnam Pro",sans-serif;
+
+background:var(--bg);
+
+color:var(--text);
+
+overflow-x:hidden;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+button{
+
+font-family:inherit;
+
+cursor:pointer;
+
+border:none;
+
+}
+
+input{
+
+font-family:inherit;
+
+outline:none;
+
+}
+
+.container{
+
+width:min(1400px,92%);
+
+margin:auto;
+
 }
 
 /* ===========================
-   HEADER
+HEADER
 =========================== */
 
-.navbar{
+header{
 
-    width:100%;
+position:sticky;
 
-    height:78px;
+top:0;
 
-    background:#111827;
+z-index:9999;
 
-    display:flex;
+background:rgba(11,17,32,.95);
 
-    justify-content:space-between;
+backdrop-filter:blur(16px);
 
-    align-items:center;
-
-    padding:0 40px;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:999;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
+border-bottom:1px solid var(--border);
 
 }
 
-.logo a{
+.navbar{
 
-    text-decoration:none;
+height:74px;
 
-    color:#fff;
+display:flex;
 
-    font-size:30px;
+justify-content:space-between;
 
-    font-weight:700;
+align-items:center;
+
+}
+
+.logo{
+
+font-size:34px;
+
+font-weight:800;
+
+color:#fff;
 
 }
 
 .logo span{
 
-    color:#3b82f6;
+color:var(--primary);
 
 }
 
-/* ===========================
-   MENU
-=========================== */
+/* menu */
 
 .menu{
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:30px;
+gap:28px;
 
 }
 
 .menu a{
 
-    color:white;
+font-weight:600;
 
-    text-decoration:none;
+transition:.3s;
 
-    font-weight:600;
-
-    font-size:15px;
-
-    transition:.3s;
-
-    position:relative;
+position:relative;
 
 }
 
 .menu a:hover{
 
-    color:#3b82f6;
+color:var(--primary2);
 
 }
 
 .menu a::after{
 
-    content:"";
+content:"";
 
-    position:absolute;
+position:absolute;
 
-    left:0;
+left:0;
 
-    bottom:-8px;
+bottom:-6px;
 
-    width:0;
+height:2px;
 
-    height:2px;
+width:0;
 
-    background:#3b82f6;
+background:var(--primary);
 
-    transition:.3s;
+transition:.3s;
 
 }
 
 .menu a:hover::after{
 
-    width:100%;
+width:100%;
 
 }
 
-/* ===========================
-   RIGHT MENU
-=========================== */
+/* right */
 
-.right-menu{
+.nav-right{
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:18px;
+gap:12px;
 
 }
 
-/* ===========================
-   SEARCH
-=========================== */
+.icon-btn{
 
-.search{
+width:46px;
 
-    position:relative;
+height:46px;
 
-}
+display:flex;
 
-.search input{
+justify-content:center;
 
-    width:240px;
+align-items:center;
 
-    padding:12px 18px;
+background:var(--card);
 
-    border-radius:14px;
+border-radius:14px;
 
-    border:none;
+border:1px solid var(--border);
 
-    outline:none;
-
-    background:#1f2937;
-
-    color:white;
+transition:.3s;
 
 }
 
-.search input::placeholder{
+.icon-btn:hover{
 
-    color:#94a3b8;
+background:var(--primary);
 
-}
-
-/* ===========================
-   ICON
-=========================== */
-
-.icon{
-
-    width:46px;
-
-    height:46px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:#1f2937;
-
-    color:white;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    position:relative;
-
-    transition:.3s;
+transform:translateY(-3px);
 
 }
 
-.icon:hover{
+.coin-box{
 
-    background:#2563eb;
+padding:10px 18px;
 
-}
+background:var(--card);
 
-.badge{
+border-radius:14px;
 
-    position:absolute;
+border:1px solid var(--border);
 
-    top:-5px;
+font-weight:700;
 
-    right:-5px;
+color:var(--yellow);
 
-    width:18px;
+display:flex;
 
-    height:18px;
+align-items:center;
 
-    background:red;
-
-    color:white;
-
-    font-size:11px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
+gap:8px;
 
 }
 
-/* ===========================
-   WALLET
-=========================== */
+/* user */
 
-.wallet{
+.user{
 
-    background:#1f2937;
+display:flex;
 
-    padding:12px 18px;
+align-items:center;
 
-    border-radius:14px;
+gap:12px;
 
-    font-weight:700;
+padding:6px 12px;
 
-    color:#4ade80;
+background:var(--card);
 
-}
-/* ===========================
-   PROFILE
-=========================== */
+border-radius:16px;
 
-.profile{
-    position:relative;
-    cursor:pointer;
-}
-
-.avatar{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    border:2px solid #3b82f6;
-    object-fit:cover;
-    transition:.3s;
-}
-
-.avatar:hover{
-    transform:scale(1.08);
-}
-
-/* ===========================
-   DROPDOWN
-=========================== */
-
-.dropdown{
-    position:absolute;
-    top:65px;
-    right:0;
-    width:280px;
-    background:#111827;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    overflow:hidden;
-    display:none;
-    box-shadow:0 15px 40px rgba(0,0,0,.35);
-}
-
-.profile:hover .dropdown{
-    display:block;
-    animation:fade .25s ease;
-}
-
-.dropdown h3{
-    padding:20px 20px 6px;
-    font-size:18px;
-}
-
-.dropdown p{
-    padding:0 20px 18px;
-    color:#94a3b8;
-    font-size:14px;
-}
-
-.dropdown hr{
-    border:none;
-    border-top:1px solid rgba(255,255,255,.08);
-}
-
-.dropdown a{
-    display:block;
-    color:#fff;
-    text-decoration:none;
-    padding:14px 20px;
-    transition:.25s;
-}
-
-.dropdown a:hover{
-    background:#2563eb;
-}
-
-/* ===========================
-   HERO
-=========================== */
-
-.hero{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:80px 8%;
-
-    background:linear-gradient(135deg,#1e3a8a,#2563eb,#0f172a);
+border:1px solid var(--border);
 
 }
 
-.hero-left{
+.user img{
 
-    width:50%;
+width:42px;
 
-}
+height:42px;
 
-.hero-left h1{
-
-    font-size:56px;
-
-    line-height:70px;
-
-    margin-bottom:20px;
+border-radius:50%;
 
 }
 
-.hero-left p{
+.user-name{
 
-    color:#cbd5e1;
-
-    font-size:18px;
-
-    margin-bottom:35px;
+font-weight:700;
 
 }
 
-.hero-right{
+.user-rank{
 
-    width:45%;
+font-size:13px;
 
-    display:flex;
-
-    justify-content:center;
+color:var(--primary2);
 
 }
 
-.hero-right img{
+/* section */
 
-    width:100%;
+section{
 
-    max-width:500px;
-
-    animation:float 4s ease-in-out infinite;
+padding:90px 0;
 
 }
 
-/* ===========================
-   BUTTON
-=========================== */
+.title{
+
+font-size:40px;
+
+font-weight:800;
+
+margin-bottom:15px;
+
+text-align:center;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:var(--text2);
+
+margin-bottom:60px;
+
+}
+
+/* button */
 
 .btn{
 
-    display:inline-block;
+display:inline-flex;
 
-    padding:16px 40px;
+align-items:center;
 
-    border-radius:16px;
+justify-content:center;
 
-    text-decoration:none;
+padding:15px 34px;
 
-    background:#2563eb;
+border-radius:16px;
 
-    color:white;
+background:var(--primary);
 
-    font-weight:700;
+color:#fff;
 
-    transition:.3s;
+font-weight:700;
+
+transition:.3s;
 
 }
 
 .btn:hover{
 
-    background:#1d4ed8;
+transform:translateY(-4px);
 
-    transform:translateY(-3px);
-
-    box-shadow:0 15px 35px rgba(37,99,235,.35);
+background:var(--primary2);
 
 }
 
-/* ===========================
-   GLASS
-=========================== */
+.btn-outline{
 
-.glass{
+background:transparent;
 
-    background:rgba(255,255,255,.06);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:18px;
+border:2px solid var(--primary);
 
 }
 
-/* ===========================
-   ANIMATION
-=========================== */
+.btn-outline:hover{
 
-@keyframes fade{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(10px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+background:var(--primary);
 
 }
 
-@keyframes float{
-
-    0%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-15px);
-
-    }
-
-    100%{
-
-        transform:translateY(0);
-
-    }
-
-}
-/* ===========================
-   DANH MỤC GAME
-=========================== */
-
-.category{
-
-    padding:80px 8%;
-
-}
-
-.category h2{
-
-    font-size:34px;
-
-    margin-bottom:35px;
-
-    text-align:center;
-
-}
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:25px;
-
-}
+/* card */
 
 .card{
 
-    background:#111827;
+background:var(--card);
 
-    border:1px solid rgba(255,255,255,.08);
+border-radius:22px;
 
-    border-radius:20px;
+border:1px solid var(--border);
 
-    padding:28px;
+box-shadow:var(--shadow);
 
-    text-align:center;
-
-    font-size:22px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-}
-
-.card:hover{
-
-    transform:translateY(-10px);
-
-    background:#2563eb;
-
-    box-shadow:0 15px 35px rgba(37,99,235,.35);
-
-}
-
-/* ===========================
-   SẢN PHẨM
-=========================== */
-
-.product{
-
-    padding:90px 8%;
-
-}
-
-.product h2{
-
-    font-size:34px;
-
-    text-align:center;
-
-    margin-bottom:40px;
-
-}
-
-.product-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-
-    gap:28px;
-
-}
-
-.product-card{
-
-    background:#111827;
-
-    border-radius:22px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.35s;
-
-}
-
-.product-card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 20px 45px rgba(0,0,0,.4);
-
-}
-
-.product-card img{
-
-    width:100%;
-
-    height:220px;
-
-    object-fit:cover;
-
-}
-
-.product-card h3{
-
-    padding:18px 20px 8px;
-
-    font-size:22px;
-
-}
-
-.product-card p{
-
-    padding:0 20px;
-
-    color:#cbd5e1;
-
-    font-size:15px;
-
-}
-
-.product-card span{
-
-    display:block;
-
-    padding:15px 20px;
-
-    font-size:28px;
-
-    color:#22c55e;
-
-    font-weight:700;
-
-}
-
-.product-card button{
-
-    width:calc(100% - 40px);
-
-    margin:0 20px 20px;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:#2563eb;
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.product-card button:hover{
-
-    background:#1d4ed8;
-
-    transform:scale(1.03);
-
-}
-
-/* ===========================
-   HOT BADGE
-=========================== */
-
-.hot{
-
-    position:absolute;
-
-    top:15px;
-
-    left:15px;
-
-    background:#ef4444;
-
-    color:white;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-.sale{
-
-    position:absolute;
-
-    top:15px;
-
-    right:15px;
-
-    background:#22c55e;
-
-    color:white;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-/* ===========================
-   HOVER ẢNH
-=========================== */
-
-.product-card{
-
-    position:relative;
-
-}
-
-.product-card img{
-
-    transition:.4s;
-
-}
-
-.product-card:hover img{
-
-    transform:scale(1.08);
-
-}
-
-/* ===========================
-   NÚT XEM THÊM
-=========================== */
-
-.more{
-
-    margin-top:45px;
-
-    text-align:center;
-
-}
-
-.more a{
-
-    display:inline-block;
-
-    padding:15px 45px;
-
-    background:#2563eb;
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:16px;
-
-    font-weight:700;
-
-    transition:.3s;
-
-}
-
-.more a:hover{
-
-    background:#1d4ed8;
-
-    transform:translateY(-4px);
-
-}
-/* ===========================
-   THỐNG KÊ
-=========================== */
-
-.stats{
-    padding:90px 8%;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.stats div{
-    background:#111827;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:22px;
-    padding:35px;
-    text-align:center;
-    transition:.3s;
-}
-
-.stats div:hover{
-    transform:translateY(-8px);
-    border-color:#2563eb;
-    box-shadow:0 15px 35px rgba(37,99,235,.25);
-}
-
-.stats h2{
-    font-size:42px;
-    color:#3b82f6;
-    margin-bottom:10px;
-}
-
-.stats p{
-    color:#cbd5e1;
-    font-size:17px;
-}
-
-/* ===========================
-   SELLER
-=========================== */
-
-.seller-section{
-    padding:90px 8%;
-}
-
-.seller-title{
-    text-align:center;
-    font-size:34px;
-    margin-bottom:40px;
-}
-
-.seller-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-}
-
-.seller-card{
-    background:#111827;
-    border-radius:20px;
-    padding:30px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,.08);
-    transition:.3s;
-}
-
-.seller-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
-}
-
-.seller-card img{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    border:3px solid #2563eb;
-    margin-bottom:15px;
-}
-
-.seller-card h3{
-    font-size:22px;
-    margin-bottom:8px;
-}
-
-.seller-card p{
-    color:#cbd5e1;
-    margin-bottom:15px;
-}
-
-.seller-card span{
-    display:inline-block;
-    padding:8px 18px;
-    background:#2563eb;
-    border-radius:30px;
-    font-size:14px;
-}
-
-/* ===========================
-   ĐÁNH GIÁ
-=========================== */
-
-.review{
-    padding:90px 8%;
-}
-
-.review-title{
-    text-align:center;
-    font-size:34px;
-    margin-bottom:40px;
-}
-
-.review-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:25px;
-}
-
-.review-card{
-    background:#111827;
-    border-radius:20px;
-    padding:30px;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.review-card h3{
-    margin-bottom:15px;
-}
-
-.review-card p{
-    color:#cbd5e1;
-    line-height:1.7;
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-
-footer{
-    margin-top:80px;
-    background:#08111f;
-    padding:60px 8%;
-}
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.footer-box h3{
-    margin-bottom:18px;
-}
-
-.footer-box a{
-    display:block;
-    color:#cbd5e1;
-    text-decoration:none;
-    margin-bottom:10px;
-    transition:.3s;
-}
-
-.footer-box a:hover{
-    color:#3b82f6;
-}
-
-.copy{
-    margin-top:40px;
-    text-align:center;
-    color:#94a3b8;
-    border-top:1px solid rgba(255,255,255,.08);
-    padding-top:25px;
-}
-
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media(max-width:992px){
-
-.hero{
-    flex-direction:column;
-    text-align:center;
-}
-
-.hero-left,
-.hero-right{
-    width:100%;
-}
-
-.hero-right{
-    margin-top:40px;
-}
-
-.menu{
-    display:none;
-}
-
-.search{
-    display:none;
-}
-
-}
-
-@media(max-width:768px){
-
-.navbar{
-    padding:15px 20px;
-}
-
-.logo a{
-    font-size:22px;
 }
 
-.wallet{
-    display:none;
-}
+/* scrollbar */
 
-.hero-left h1{
-    font-size:38px;
-    line-height:48px;
-}
+::-webkit-scrollbar{
 
-.hero-left p{
-    font-size:16px;
-}
+width:8px;
 
-.product-grid,
-.grid,
-.stats,
-.seller-grid,
-.review-grid{
-    grid-template-columns:1fr;
 }
 
-}
+::-webkit-scrollbar-thumb{
 
-@media(max-width:480px){
+background:var(--primary);
 
-.hero{
-    padding:60px 20px;
-}
+border-radius:10px;
 
-.category,
-.product,
-.stats,
-.review,
-.seller-section{
-    padding:60px 20px;
 }
 
-.btn{
-    width:100%;
-    text-align:center;
-}
+::-webkit-scrollbar-track{
 
-.product-card button{
-    width:100%;
-    margin:20px 0 0;
-    border-radius:0 0 20px 20px;
-}
+background:#09111f;
 
 }
