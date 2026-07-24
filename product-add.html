@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/seller.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -45,40 +50,65 @@
 
 </header>
 
-<section class="seller-dashboard">
+<section class="seller-page">
+
+<div class="seller-card">
+
+<div class="seller-title">
 
 <h1>📦 Đăng bán tài khoản</h1>
 
-<form id="productForm" class="seller-form">
+<p>
+
+Đăng tài khoản Game, Cloud Phone hoặc sản phẩm số lên TrungNi Shop.
+
+</p>
+
+</div>
+
+<form id="productForm">
+
+<div class="form-group">
 
 <label>Tên sản phẩm</label>
+
 <input
 type="text"
 id="name"
 placeholder="Ví dụ: Acc Free Fire VIP"
 required>
 
+</div>
+
+<div class="form-row">
+
+<div class="form-group">
+
 <label>Danh mục</label>
 
 <select id="category">
 
-<option value="Free Fire">🔥 Free Fire</option>
+<option value="freefire">🔥 Free Fire</option>
 
-<option value="Liên Quân">⚔ Liên Quân</option>
+<option value="lienquan">⚔ Liên Quân</option>
 
-<option value="Roblox">🎮 Roblox</option>
+<option value="roblox">🎮 Roblox</option>
 
-<option value="Minecraft">🧱 Minecraft</option>
+<option value="minecraft">🧱 Minecraft</option>
 
-<option value="UgPhone">📱 UgPhone</option>
+<option value="ugphone">📱 UgPhone</option>
 
-<option value="VMOS Cloud">☁️ VMOS Cloud</option>
+<option value="vmos">☁️ VMOS Cloud</option>
 
-<option value="VSPhone">📲 VSPhone</option>
+<option value="vsphone">📲 VSPhone Cloud</option>
 
 </select>
 
-<label>Giá bán</label>
+</div>
+
+<div class="form-group">
+
+<label>Giá bán (VNĐ)</label>
 
 <input
 type="number"
@@ -86,34 +116,70 @@ id="price"
 placeholder="100000"
 required>
 
-<label>Mô tả</label>
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>Mô tả tài khoản</label>
 
 <textarea
+
 id="description"
-rows="5"
-placeholder="Thông tin tài khoản..."
+
+placeholder="Ví dụ:
+
+• Rank Hero
+
+• Full Skin
+
+• Đã liên kết Email
+
+• Bảo hành 30 ngày"
+
 required></textarea>
+
+</div>
+
+<div class="form-group">
 
 <label>Ảnh sản phẩm</label>
 
 <input
+
 type="file"
+
 id="image"
+
 accept="image/*">
 
-<button
-type="submit"
-class="btn">
+</div>
 
-🚀 Đăng bán
+<div class="preview-box">
+
+<img id="previewImage">
+
+</div>
+
+<button
+
+type="submit"
+
+class="btn-submit">
+
+🚀 Đăng bán sản phẩm
 
 </button>
 
 </form>
+
+</div>
 
 </section>
 
 <script type="module" src="js/product.js"></script>
 
 </body>
+
 </html>
