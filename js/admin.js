@@ -1,221 +1,76 @@
-import { auth, db } from "./firebase.js";
-
 import {
-onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    db,
+    storage,
+    collection,
+    addDoc,
+    serverTimestamp,
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from "./firebase.js";
 
-import {
-collection,
-getDocs,
-doc,
-updateDoc,
-deleteDoc,
-query,
-where
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const form = document.getElementById("productForm");
 
-const sellerList=document.getElementById("sellerList");
-const productList=document.getElementById("productList");
+if (form) {
 
-onAuthStateChanged(auth,async(user)=>{
+    form.addEventListener("submit", async (e) => {
 
-if(!user){
+        e.preventDefault();
 
-location.href="login.html";
+        try {
 
-return;
+            const name = document.getElementById("name").value.trim();
+            const description = document.getElementById("description").value.trim();
+            const category = document.getElementById("category").value;
+            const price = Number(document.getElementById("price").value);
 
-}
+            const file = document.getElementById("image").files[0];
 
-// Kiểm tra quyền Admin
-const adminEmail="trungni168@gmail.com";
+            if (!file) {
+                alert("Vui lòng chọn ảnh.");
+                return;
+            }
 
-if(user.email!=adminEmail){
+            // Upload ảnh
 
-alert("Bạn không có quyền truy cập.");
+            const fileName = Date.now() + "_" + file.name;
 
-location.href="index.html";
+            const storageRef = ref(storage, "products/" + fileName);
 
-return;
+            await uploadBytes(storageRef, file);
 
-}
+            const imageUrl = await getDownloadURL(storageRef);
 
-loadSeller();
+            // Lưu Firestore
 
-loadProducts();
+            await addDoc(collection(db, "products"), {
 
-});
+                name,
 
-async function loadSeller(){
+                description,
 
-if(!sellerList)return;
+                category,
 
-sellerList.innerHTML="";
+                price,
 
-const snapshot=await getDocs(collection(db,"seller_requests"));
+                image: imageUrl,
 
-snapshot.forEach((docSnap)=>{
+                createdAt: serverTimestamp()
 
-const data=docSnap.data();
+            });
 
-sellerList.innerHTML+=`
+            alert("🎉 Thêm sản phẩm thành công!");
 
-<div class="seller-card">
+            form.reset();
 
-<h3>${data.shopName||"Chưa đặt tên shop"}</h3>
+        } catch (err) {
 
-<p>👤 ${data.name}</p>
+            console.error(err);
 
-<p>📧 ${data.email}</p>
+            alert("Có lỗi xảy ra.");
 
-<p>📌 ${data.status}</p>
+        }
 
-<button
-class="btn-success"
-onclick="approveSeller('${docSnap.id}')">
-
-✅ Duyệt
-
-</button>
-
-<button
-class="btn-warning"
-onclick="rejectSeller('${docSnap.id}')">
-
-❌ Từ chối
-
-</button>
-
-<button
-class="btn-danger"
-onclick="deleteSeller('${docSnap.id}')">
-
-🗑️ Xóa
-
-</button>
-
-</div>
-
-`;
-
-});
-
-}
-
-window.approveSeller=async(id)=>{
-
-await updateDoc(doc(db,"seller_requests",id),{
-
-status:"approved"
-
-});
-
-alert("Đã duyệt Seller");
-
-location.reload();
-
-}
-
-window.rejectSeller=async(id)=>{
-
-await updateDoc(doc(db,"seller_requests",id),{
-
-status:"rejected"
-
-});
-
-alert("Đã từ chối Seller");
-
-location.reload();
-
-}
-
-window.deleteSeller=async(id)=>{
-
-if(!confirm("Xóa Seller này?")) return;
-
-await deleteDoc(doc(db,"seller_requests",id));
-
-location.reload();
-
-}
-
-async function loadProducts(){
-
-if(!productList)return;
-
-productList.innerHTML="";
-
-const q=query(
-
-collection(db,"products"),
-
-where("status","==","pending")
-
-);
-
-const snapshot=await getDocs(q);
-
-snapshot.forEach((docSnap)=>{
-
-const data=docSnap.data();
-
-productList.innerHTML+=`
-
-<div class="seller-card">
-
-<h3>${data.name}</h3>
-
-<p>📂 ${data.category}</p>
-
-<p>💰 ${Number(data.price).toLocaleString()}đ</p>
-
-<p>👤 ${data.sellerEmail}</p>
-
-<button
-class="btn-success"
-onclick="approveProduct('${docSnap.id}')">
-
-✅ Duyệt
-
-</button>
-
-<button
-class="btn-danger"
-onclick="deleteProduct('${docSnap.id}')">
-
-🗑️ Xóa
-
-</button>
-
-</div>
-
-`;
-
-});
-
-}
-
-window.approveProduct=async(id)=>{
-
-await updateDoc(doc(db,"products",id),{
-
-status:"approved"
-
-});
-
-alert("Đã duyệt sản phẩm");
-
-location.reload();
-
-}
-
-window.deleteProduct=async(id)=>{
-
-if(!confirm("Xóa sản phẩm?")) return;
-
-await deleteDoc(doc(db,"products",id));
-
-location.reload();
+    });
 
 }
