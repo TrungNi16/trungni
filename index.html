@@ -1,47 +1,103 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrungNi Shop</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>TrungNi Shop | Shop Tài Khoản Game</title>
+
+<meta name="description" content="Shop tài khoản Free Fire, Liên Quân, Roblox, Minecraft, UgPhone, VMOS Cloud, VSPhone.">
+
+<meta name="keywords" content="shop game,trungni,trungni shop,free fire,roblox,minecraft">
+
+<meta name="theme-color" content="#2563eb">
+
+<link rel="icon" href="img/logo.png">
+
+<!-- Google Font -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/home.css">
+
+<link rel="stylesheet" href="css/shop.css">
+
+<!-- AOS Animation -->
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 </head>
+
 <body>
+    <!-- ===========================
+HEADER
+=========================== -->
 
 <header>
 
-    <div class="logo">
-        <a href="index.html">TrungNi Shop</a>
-    </div>
+    <div class="container navbar">
 
-    <nav class="menu">
-        <a href="index.html">🏠 Trang chủ</a>
-        <a href="shop.html">🛒 Shop</a>
-        <a href="market.html">📦 Chợ tài khoản</a>
-        <a href="deposit.html">💰 Nạp tiền</a>
-    </nav>
+        <a href="index.html" class="logo">
+            Trung<span>Ni</span> Shop
+        </a>
 
-    <div class="user-menu">
+        <nav class="menu">
 
-        <div class="user-info">
-            👤 <span id="userName">TrungNi</span>
-            <span class="money" id="userMoney">💰 0đ</span>
-        </div>
+            <a href="index.html">
+                🏠 Trang chủ
+            </a>
 
-        <button class="icon-btn">🔔</button>
+            <a href="shop.html">
+                🛒 Shop
+            </a>
 
-        <div class="dropdown">
+            <a href="market.html">
+                📦 Chợ tài khoản
+            </a>
 
-            <button class="icon-btn">⚙️</button>
+            <a href="seller-dashboard.html">
+                👨‍💼 Seller
+            </a>
 
-            <div class="dropdown-menu">
-                <a href="account.html">👤 Hồ sơ</a>
-                <a href="seller.html">🏪 Đăng ký Seller</a>
-                <a href="admin.html">👑 Quản trị</a>
-                <a href="#" id="logoutBtn">🚪 Đăng xuất</a>
+            <a href="admin.html">
+                ⚙️ Admin
+            </a>
+
+            <a href="profile.html">
+                👤 Cá nhân
+            </a>
+
+        </nav>
+
+        <div class="nav-right">
+
+            <div class="coin-box">
+                💰
+                <span id="user-balance">0 VNĐ</span>
             </div>
+
+            <a href="login.html" class="btn">
+                Đăng nhập
+            </a>
 
         </div>
 
@@ -49,104 +105,841 @@
 
 </header>
 
+<!-- ===========================
+MOBILE MENU BUTTON
+=========================== -->
+
+<div class="mobile-menu-btn" id="mobileMenuBtn">
+
+☰
+
+</div>
+
+<!-- ===========================
+MOBILE MENU
+=========================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="index.html">
+        🏠 Trang chủ
+    </a>
+
+    <a href="shop.html">
+        🛒 Shop
+    </a>
+
+    <a href="market.html">
+        📦 Chợ tài khoản
+    </a>
+
+    <a href="seller-dashboard.html">
+        👨‍💼 Seller
+    </a>
+
+    <a href="admin.html">
+        ⚙️ Admin
+    </a>
+
+    <a href="profile.html">
+        👤 Hồ sơ
+    </a>
+
+    <a href="login.html">
+        🔑 Đăng nhập
+    </a>
+
+</div>
+<!-- =====================================
+        HERO
+====================================== -->
+
 <section class="hero">
 
-    <h1>TRUNGNI SHOP</h1>
+    <div class="container">
 
-    <p>TN Uy tín làm nên thương hiệu</p>
+        <div class="hero-left" data-aos="fade-right">
 
-    <a class="btn" href="shop.html">
-        Khám phá Shop
-    </a>
+            <span class="hero-badge">
+                🔥 Shop Uy Tín #1 Việt Nam
+            </span>
+
+            <h1>
+
+                Mua tài khoản game
+
+                <span>Uy tín - Giá rẻ</span>
+
+            </h1>
+
+            <p>
+
+                Chuyên cung cấp tài khoản
+
+                <strong>Free Fire</strong>,
+                <strong>Liên Quân</strong>,
+                <strong>Roblox</strong>,
+                <strong>Minecraft</strong>,
+                <strong>UgPhone</strong>,
+                <strong>VMOS Cloud</strong>,
+                <strong>VSPhone</strong>
+
+                với giao hàng tự động 24/7.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="shop.html" class="btn">
+
+                    🛒 Mua ngay
+
+                </a>
+
+                <a href="market.html" class="btn btn-outline">
+
+                    📦 Chợ tài khoản
+
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+
+                    <h2>20.000+</h2>
+
+                    <span>Khách hàng</span>
+
+                </div>
+
+                <div>
+
+                    <h2>8.500+</h2>
+
+                    <span>Tài khoản</span>
+
+                </div>
+
+                <div>
+
+                    <h2>99.8%</h2>
+
+                    <span>Hài lòng</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-image" data-aos="fade-left">
+
+            <img src="img/banner.png" alt="Banner">
+
+        </div>
+
+    </div>
 
 </section>
+<!-- =====================================
+        DANH MỤC GAME
+====================================== -->
 
-<section>
+<section class="category">
 
-<h2>Danh mục</h2>
+    <div class="container">
 
-<div class="grid">
+        <h2 class="title" data-aos="fade-up">
+            Danh mục nổi bật
+        </h2>
 
-   <h2>Danh mục</h2>
+        <p class="subtitle" data-aos="fade-up">
+            Chọn danh mục bạn muốn mua
+        </p>
 
-<div class="grid">
+        <div class="category-grid">
 
-    <a class="card" href="shop/freefire.html">
-        <h3>🔥 Free Fire</h3>
-    </a>
+            <a href="shop.html?category=freefire" class="category-card" data-aos="zoom-in">
 
-    <a class="card" href="shop/lienquan.html">
-        <h3>⚔ Liên Quân</h3>
-    </a>
+                <img src="img/freefire.png" alt="Free Fire">
 
-    <a class="card" href="shop/roblox.html">
-        <h3>🎮 Roblox</h3>
-    </a>
+                <h3>🔥 Free Fire</h3>
 
-    <a class="card" href="shop/minecraft.html">
-        <h3>🧱 Minecraft</h3>
-    </a>
+                <p>Hơn 2.500 tài khoản</p>
 
-    <a class="card" href="shop/ugphone.html">
-        <h3>📱 UgPhone Cloud</h3>
-    </a>
+            </a>
 
-    <a class="card" href="shop/vmos.html">
-        <h3>☁️ VMOS Cloud</h3>
-    </a>
+            <a href="shop.html?category=lienquan" class="category-card" data-aos="zoom-in">
 
-    <a class="card" href="shop/vsphone.html">
-        <h3>📲 VSPhone Cloud</h3>
-    </a>
+                <img src="img/lienquan.png" alt="Liên Quân">
 
-</div>
+                <h3>⚔️ Liên Quân</h3>
+
+                <p>Rank Cao • Skin VIP</p>
+
+            </a>
+
+            <a href="shop.html?category=roblox" class="category-card" data-aos="zoom-in">
+
+                <img src="img/roblox.png" alt="Roblox">
+
+                <h3>🎮 Roblox</h3>
+
+                <p>Robux • Account</p>
+
+            </a>
+
+            <a href="shop.html?category=minecraft" class="category-card" data-aos="zoom-in">
+
+                <img src="img/minecraft.png" alt="Minecraft">
+
+                <h3>🧱 Minecraft</h3>
+
+                <p>Premium Account</p>
+
+            </a>
+
+            <a href="shop.html?category=ugphone" class="category-card" data-aos="zoom-in">
+
+                <img src="img/ugphone.png" alt="UgPhone">
+
+                <h3>📱 UgPhone</h3>
+
+                <p>Cloud Phone</p>
+
+            </a>
+
+            <a href="shop.html?category=vmos" class="category-card" data-aos="zoom-in">
+
+                <img src="img/vmos.png" alt="VMOS Cloud">
+
+                <h3>☁️ VMOS Cloud</h3>
+
+                <p>Cloud Android</p>
+
+            </a>
+
+            <a href="shop.html?category=vsphone" class="category-card" data-aos="zoom-in">
+
+                <img src="img/vsphone.png" alt="VSPhone">
+
+                <h3>📲 VSPhone</h3>
+
+                <p>Phone Cloud</p>
+
+            </a>
+
+            <a href="shop.html" class="category-card" data-aos="zoom-in">
+
+                <img src="img/all.png" alt="Tất cả">
+
+                <h3>🛍️ Tất cả</h3>
+
+                <p>Xem toàn bộ sản phẩm</p>
+
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
+<!-- =====================================
+        SẢN PHẨM NỔI BẬT
+====================================== -->
 
-<section>
+<section class="product-section">
 
-<h2>Tại sao chọn TrungNi Shop?</h2>
+    <div class="container">
 
-<div class="grid">
+        <h2 class="title" data-aos="fade-up">
+            🔥 Sản phẩm nổi bật
+        </h2>
 
-    <div class="card">
-        <h3>✅ Giao dịch tự động</h3>
+        <p class="subtitle" data-aos="fade-up">
+            Những sản phẩm được mua nhiều nhất
+        </p>
+
+        <div class="product-grid">
+
+            <!-- Product 1 -->
+
+            <div class="product-card" data-aos="zoom-in">
+
+                <span class="badge hot">
+                    HOT
+                </span>
+
+                <div class="favorite">
+                    ❤️
+                </div>
+
+                <img src="img/product1.jpg" alt="Free Fire">
+
+                <div class="product-body">
+
+                    <div class="stock">
+                        ✔ Còn hàng
+                    </div>
+
+                    <h3 class="product-title">
+                        🔥 Free Fire VIP
+                    </h3>
+
+                    <p class="product-desc">
+                        Rank Cao • Full Skin • Đổi Email
+                    </p>
+
+                    <div class="price-box">
+
+                        <span class="old-price">
+                            199.000đ
+                        </span>
+
+                        <span class="price">
+                            99.000đ
+                        </span>
+
+                    </div>
+
+                    <button class="buy-btn">
+                        🛒 Mua ngay
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product 2 -->
+
+            <div class="product-card" data-aos="zoom-in">
+
+                <span class="badge sale">
+                    -50%
+                </span>
+
+                <div class="favorite">
+                    ❤️
+                </div>
+
+                <img src="img/product2.jpg" alt="Liên Quân">
+
+                <div class="product-body">
+
+                    <div class="stock">
+                        ✔ Còn hàng
+                    </div>
+
+                    <h3 class="product-title">
+                        ⚔️ Liên Quân VIP
+                    </h3>
+
+                    <p class="product-desc">
+                        Full Skin • Rank Cao
+                    </p>
+
+                    <div class="price-box">
+
+                        <span class="old-price">
+                            300.000đ
+                        </span>
+
+                        <span class="price">
+                            150.000đ
+                        </span>
+
+                    </div>
+
+                    <button class="buy-btn">
+                        🛒 Mua ngay
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product 3 -->
+
+            <div class="product-card" data-aos="zoom-in">
+
+                <span class="badge new">
+                    NEW
+                </span>
+
+                <div class="favorite">
+                    ❤️
+                </div>
+
+                <img src="img/product3.jpg" alt="Roblox">
+
+                <div class="product-body">
+
+                    <div class="stock">
+                        ✔ Còn hàng
+                    </div>
+
+                    <h3 class="product-title">
+                        🎮 Roblox Premium
+                    </h3>
+
+                    <p class="product-desc">
+                        Có Robux • Full Gamepass
+                    </p>
+
+                    <div class="price-box">
+
+                        <span class="old-price">
+                            120.000đ
+                        </span>
+
+                        <span class="price">
+                            69.000đ
+                        </span>
+
+                    </div>
+
+                    <button class="buy-btn">
+                        🛒 Mua ngay
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product 4 -->
+
+            <div class="product-card" data-aos="zoom-in">
+
+                <span class="badge hot">
+                    HOT
+                </span>
+
+                <div class="favorite">
+                    ❤️
+                </div>
+
+                <img src="img/product4.jpg" alt="UgPhone">
+
+                <div class="product-body">
+
+                    <div class="stock">
+                        ✔ Còn hàng
+                    </div>
+
+                    <h3 class="product-title">
+                        📱 UgPhone
+                    </h3>
+
+                    <p class="product-desc">
+                        Cloud Phone 24/7
+                    </p>
+
+                    <div class="price-box">
+
+                        <span class="old-price">
+                            90.000đ
+                        </span>
+
+                        <span class="price">
+                            59.000đ
+                        </span>
+
+                    </div>
+
+                    <button class="buy-btn">
+                        🛒 Mua ngay
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="text-align:center;margin-top:50px;">
+
+            <a href="shop.html" class="btn">
+
+                Xem tất cả sản phẩm →
+
+            </a>
+
+        </div>
+
     </div>
-
-    <div class="card">
-        <h3>🛡️ Bảo hành tài khoản</h3>
-    </div>
-
-    <div class="card">
-        <h3>💬 Hỗ trợ 24/7</h3>
-    </div>
-
-    <div class="card">
-        <h3>⭐ Seller uy tín</h3>
-    </div>
-
-</div>
 
 </section>
+<!-- =====================================
+            TOP SELLER
+====================================== -->
 
-<script>
-// Hiển thị số dư
-let money = Number(localStorage.getItem("money")) || 0;
+<section class="top-seller">
 
-document.getElementById("userMoney").textContent =
-    "💰 " + money.toLocaleString("vi-VN") + "đ";
+    <div class="container">
 
-// Đăng xuất
-document.getElementById("logoutBtn").onclick = function(e){
-    e.preventDefault();
+        <h2 class="title" data-aos="fade-up">
+            🏆 Top Seller Uy Tín
+        </h2>
 
-    localStorage.removeItem("money");
+        <p class="subtitle" data-aos="fade-up">
+            Những người bán có nhiều giao dịch và được đánh giá cao
+        </p>
 
-    alert("Đã đăng xuất!");
+        <div class="seller-grid">
 
-    location.reload();
-};
-</script>
+            <!-- Seller 1 -->
 
-</body>
-</html>
+            <div class="seller-card" data-aos="zoom-in">
+
+                <img src="img/seller1.png" class="seller-avatar">
+
+                <h3>
+                    TrungNi
+                    <span class="verify">✔</span>
+                </h3>
+
+                <p class="seller-rank">
+                    ⭐ Seller Kim Cương
+                </p>
+
+                <div class="seller-rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>5.0 (1.258 đánh giá)</span>
+
+                </div>
+
+                <div class="seller-info">
+
+                    <div>
+
+                        <h4>2.850+</h4>
+
+                        <span>Đơn bán</span>
+
+                    </div>
+
+                    <div>
+
+                        <h4>99%</h4>
+
+                        <span>Uy tín</span>
+
+                    </div>
+
+                </div>
+
+                <a href="market.html" class="btn">
+
+                    Xem Shop
+
+                </a>
+
+            </div>
+
+            <!-- Seller 2 -->
+
+            <div class="seller-card" data-aos="zoom-in">
+
+                <img src="img/seller2.png" class="seller-avatar">
+
+                <h3>
+
+                    Admin
+
+                    <span class="verify">✔</span>
+
+                </h3>
+
+                <p class="seller-rank">
+
+                    ⭐ Seller VIP
+
+                </p>
+
+                <div class="seller-rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>4.9 (965 đánh giá)</span>
+
+                </div>
+
+                <div class="seller-info">
+
+                    <div>
+
+                        <h4>1.980+</h4>
+
+                        <span>Đơn bán</span>
+
+                    </div>
+
+                    <div>
+
+                        <h4>98%</h4>
+
+                        <span>Uy tín</span>
+
+                    </div>
+
+                </div>
+
+                <a href="market.html" class="btn">
+
+                    Xem Shop
+
+                </a>
+
+            </div>
+
+            <!-- Seller 3 -->
+
+            <div class="seller-card" data-aos="zoom-in">
+
+                <img src="img/seller3.png" class="seller-avatar">
+
+                <h3>
+
+                    Seller VIP
+
+                    <span class="verify">✔</span>
+
+                </h3>
+
+                <p class="seller-rank">
+
+                    ⭐ Seller Vàng
+
+                </p>
+
+                <div class="seller-rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>4.8 (742 đánh giá)</span>
+
+                </div>
+
+                <div class="seller-info">
+
+                    <div>
+
+                        <h4>1.250+</h4>
+
+                        <span>Đơn bán</span>
+
+                    </div>
+
+                    <div>
+
+                        <h4>97%</h4>
+
+                        <span>Uy tín</span>
+
+                    </div>
+
+                </div>
+
+                <a href="market.html" class="btn">
+
+                    Xem Shop
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+            TOP SELLER
+====================================== -->
+
+<section class="top-seller">
+
+    <div class="container">
+
+        <h2 class="title" data-aos="fade-up">
+            🏆 Top Seller Uy Tín
+        </h2>
+
+        <p class="subtitle" data-aos="fade-up">
+            Những người bán có nhiều giao dịch và được đánh giá cao
+        </p>
+
+        <div class="seller-grid">
+
+            <!-- Seller 1 -->
+
+            <div class="seller-card" data-aos="zoom-in">
+
+                <img src="img/seller1.png" class="seller-avatar">
+
+                <h3>
+                    TrungNi
+                    <span class="verify">✔</span>
+                </h3>
+
+                <p class="seller-rank">
+                    ⭐ Seller Kim Cương
+                </p>
+
+                <div class="seller-rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>5.0 (1.258 đánh giá)</span>
+
+                </div>
+
+                <div class="seller-info">
+
+                    <div>
+
+                        <h4>2.850+</h4>
+
+                        <span>Đơn bán</span>
+
+                    </div>
+
+                    <div>
+
+                        <h4>99%</h4>
+
+                        <span>Uy tín</span>
+
+                    </div>
+
+                </div>
+
+                <a href="market.html" class="btn">
+
+                    Xem Shop
+
+                </a>
+
+            </div>
+
+            <!-- Seller 2 -->
+
+            <div class="seller-card" data-aos="zoom-in">
+
+                <img src="img/seller2.png" class="seller-avatar">
+
+                <h3>
+
+                    Admin
+
+                    <span class="verify">✔</span>
+
+                </h3>
+
+                <p class="seller-rank">
+
+                    ⭐ Seller VIP
+
+                </p>
+
+                <div class="seller-rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>4.9 (965 đánh giá)</span>
+
+                </div>
+
+                <div class="seller-info">
+
+                    <div>
+
+                        <h4>1.980+</h4>
+
+                        <span>Đơn bán</span>
+
+                    </div>
+
+                    <div>
+
+                        <h4>98%</h4>
+
+                        <span>Uy tín</span>
+
+                    </div>
+
+                </div>
+
+                <a href="market.html" class="btn">
+
+                    Xem Shop
+
+                </a>
+
+            </div>
+
+            <!-- Seller 3 -->
+
+            <div class="seller-card" data-aos="zoom-in">
+
+                <img src="img/seller3.png" class="seller-avatar">
+
+                <h3>
+
+                    Seller VIP
+
+                    <span class="verify">✔</span>
+
+                </h3>
+
+                <p class="seller-rank">
+
+                    ⭐ Seller Vàng
+
+                </p>
+
+                <div class="seller-rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>4.8 (742 đánh giá)</span>
+
+                </div>
+
+                <div class="seller-info">
+
+                    <div>
+
+                        <h4>1.250+</h4>
+
+                        <span>Đơn bán</span>
+
+                    </div>
+
+                    <div>
+
+                        <h4>97%</h4>
+
+                        <span>Uy tín</span>
+
+                    </div>
+
+                </div>
+
+                <a href="market.html" class="btn">
+
+                    Xem Shop
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
