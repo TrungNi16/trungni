@@ -88,20 +88,42 @@ HEADER
 
         </nav>
 
-        <div class="nav-right">
+<div class="nav-right">
 
-            <div class="coin-box">
-                💰
-                <span id="user-balance">0 VNĐ</span>
-            </div>
+    <div class="coin-box">
+        💰
+        <span id="user-balance">0 VNĐ</span>
+    </div>
 
-            <a href="login.html" class="btn">
-                Đăng nhập
-            </a>
+    <!-- Chưa đăng nhập -->
+    <div id="guestMenu">
 
-        </div>
+        <a href="login.html" class="btn">
+            🔑 Đăng nhập
+        </a>
+
+        <a href="register.html" class="btn btn-outline">
+            📝 Đăng ký
+        </a>
 
     </div>
+
+    <!-- Đã đăng nhập -->
+    <div id="userMenu" style="display:none;align-items:center;gap:12px;">
+
+        <span id="userName" style="font-weight:600;"></span>
+
+        <a href="profile.html" class="btn">
+            👤 Hồ sơ
+        </a>
+
+        <button id="logoutBtn" class="btn">
+            🚪 Đăng xuất
+        </button>
+
+    </div>
+
+</div>
 
 </header>
 
@@ -950,6 +972,8 @@ MOBILE MENU
 <!-- APP -->
 
 <script src="js/app.js"></script>
+
+<script type="module" src="js/auth.js"></script>
 
 </body>
 
