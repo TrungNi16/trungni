@@ -236,3 +236,610 @@ grid-template-columns:1fr;
 }
 
 }
+/* ===========================
+      ANIMATION
+=========================== */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp .8s ease forwards;
+}
+
+.fade-down{
+    opacity:0;
+    transform:translateY(-40px);
+    animation:fadeDown .8s ease forwards;
+}
+
+.fade-left{
+    opacity:0;
+    transform:translateX(-40px);
+    animation:fadeLeft .8s ease forwards;
+}
+
+.fade-right{
+    opacity:0;
+    transform:translateX(40px);
+    animation:fadeRight .8s ease forwards;
+}
+
+.zoom-in{
+    animation:zoomIn .6s ease;
+}
+
+.rotate{
+    animation:rotate360 1s linear;
+}
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes fadeDown{
+
+0%{
+opacity:0;
+transform:translateY(-40px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes fadeLeft{
+
+0%{
+opacity:0;
+transform:translateX(-40px);
+}
+
+100%{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+@keyframes fadeRight{
+
+0%{
+opacity:0;
+transform:translateX(40px);
+}
+
+100%{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+@keyframes zoomIn{
+
+0%{
+opacity:0;
+transform:scale(.8);
+}
+
+100%{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+@keyframes rotate360{
+
+from{
+transform:rotate(0);
+}
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+/* ===========================
+      LOADING
+=========================== */
+
+.loading{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:80px;
+
+}
+
+.loader{
+
+width:60px;
+
+height:60px;
+
+border:6px solid rgba(255,255,255,.15);
+
+border-top:6px solid #3b82f6;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* ===========================
+      SKELETON
+=========================== */
+
+.skeleton{
+
+background:linear-gradient(
+90deg,
+#1f2937 25%,
+#334155 50%,
+#1f2937 75%
+);
+
+background-size:400% 100%;
+
+animation:skeleton 1.4s infinite;
+
+border-radius:12px;
+
+}
+
+@keyframes skeleton{
+
+0%{
+
+background-position:100% 0;
+
+}
+
+100%{
+
+background-position:-100% 0;
+
+}
+
+}
+
+.skeleton-image{
+
+width:100%;
+
+height:220px;
+
+}
+
+.skeleton-title{
+
+height:24px;
+
+margin:18px 0;
+
+}
+
+.skeleton-text{
+
+height:16px;
+
+margin-bottom:10px;
+
+}
+
+.skeleton-button{
+
+height:48px;
+
+margin-top:20px;
+
+}
+
+/* ===========================
+      HOVER EFFECT
+=========================== */
+
+.hover-scale{
+
+transition:.3s;
+
+}
+
+.hover-scale:hover{
+
+transform:scale(1.05);
+
+}
+
+.hover-up{
+
+transition:.3s;
+
+}
+
+.hover-up:hover{
+
+transform:translateY(-8px);
+
+}
+
+.glow:hover{
+
+box-shadow:0 0 30px rgba(59,130,246,.45);
+
+}
+
+/* ===========================
+      RIPPLE BUTTON
+=========================== */
+
+.ripple{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.ripple::after{
+
+content:"";
+
+position:absolute;
+
+width:0;
+
+height:0;
+
+left:50%;
+
+top:50%;
+
+background:rgba(255,255,255,.3);
+
+border-radius:50%;
+
+transform:translate(-50%,-50%);
+
+transition:.5s;
+
+}
+
+.ripple:active::after{
+
+width:350px;
+
+height:350px;
+
+}
+/* ===========================
+      DARK MODE
+=========================== */
+
+.dark-mode{
+
+    --bg:#050b16;
+
+    --card:#0f172a;
+
+    --card2:#1e293b;
+
+    background:var(--bg);
+
+    color:#fff;
+
+}
+
+/* ===========================
+      BACK TO TOP
+=========================== */
+
+.back-top{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    z-index:9999;
+
+    transition:.3s;
+
+    box-shadow:0 10px 30px rgba(37,99,235,.35);
+
+}
+
+.back-top:hover{
+
+    transform:translateY(-6px);
+
+    background:#1d4ed8;
+
+}
+
+/* ===========================
+      TOAST
+=========================== */
+
+.toast{
+
+    position:fixed;
+
+    top:25px;
+
+    right:25px;
+
+    min-width:280px;
+
+    background:#111827;
+
+    color:white;
+
+    padding:16px 22px;
+
+    border-left:5px solid #22c55e;
+
+    border-radius:14px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+
+    animation:toastShow .35s ease;
+
+    z-index:99999;
+
+}
+
+@keyframes toastShow{
+
+from{
+
+opacity:0;
+
+transform:translateX(80px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+/* ===========================
+      POPUP
+=========================== */
+
+.popup{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.popup-box{
+
+    width:420px;
+
+    max-width:95%;
+
+    background:#111827;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    text-align:center;
+
+    animation:zoomIn .35s;
+
+}
+
+.popup-box h2{
+
+    margin-bottom:15px;
+
+}
+
+.popup-box p{
+
+    color:#cbd5e1;
+
+    margin-bottom:25px;
+
+}
+
+.popup-box button{
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+      GLASS
+=========================== */
+
+.glass-card{
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+}
+
+/* ===========================
+      SHADOW
+=========================== */
+
+.shadow-blue{
+
+    box-shadow:0 15px 35px rgba(37,99,235,.35);
+
+}
+
+.shadow-green{
+
+    box-shadow:0 15px 35px rgba(34,197,94,.35);
+
+}
+
+.shadow-red{
+
+    box-shadow:0 15px 35px rgba(239,68,68,.35);
+
+}
+
+/* ===========================
+      UTILITIES
+=========================== */
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.mt-20{
+
+    margin-top:20px;
+
+}
+
+.mt-40{
+
+    margin-top:40px;
+
+}
+
+.mb-20{
+
+    margin-bottom:20px;
+
+}
+
+.mb-40{
+
+    margin-bottom:40px;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.flex{
+
+    display:flex;
+
+}
+
+.grid{
+
+    display:grid;
+
+}
+
+.round{
+
+    border-radius:50%;
+
+}
+
+/* ===========================
+      COPYRIGHT
+=========================== */
+
+.copyright{
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#94a3b8;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
