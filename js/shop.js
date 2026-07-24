@@ -1,238 +1,207 @@
-/* ===========================
-   SHOP HEADER
-=========================== */
+import {
+    db,
+    collection,
+    getDocs
+} from "./firebase.js";
 
-.shop-header{
-    padding:70px 8%;
-    text-align:center;
-    background:linear-gradient(135deg,#2563eb,#1e40af);
-}
+// =========================
+// DOM
+// =========================
 
-.shop-header h1{
-    font-size:48px;
-    margin-bottom:15px;
-}
+const productList = document.getElementById("product-list");
+const searchInput = document.getElementById("search");
 
-.shop-header p{
-    font-size:18px;
-    color:#e5e7eb;
-    margin-bottom:30px;
-}
+let allProducts = [];
+let currentCategory = "all";
 
-.shop-header input{
-    width:100%;
-    max-width:550px;
-    padding:16px 20px;
-    border:none;
-    border-radius:16px;
-    outline:none;
-    font-size:16px;
-}
+// =========================
+// Load Products
+// =========================
 
-/* ===========================
-   PRODUCT GRID
-=========================== */
+async function loadProducts() {
 
-.product-grid{
+    productList.innerHTML = `
+        <div class="loading">
+            Đang tải sản phẩm...
+        </div>
+    `;
 
-    padding:60px 8%;
+    try {
 
-    display:grid;
+        const snapshot = await getDocs(collection(db, "products"));
 
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        allProducts = [];
 
-    gap:30px;
+        snapshot.forEach(doc => {
 
-}
+            allProducts.push({
 
-/* ===========================
-   PRODUCT CARD
-=========================== */
+                id: doc.id,
 
-.product{
+                ...doc.data()
 
-    background:#111827;
+            });
 
-    border-radius:20px;
+        });
 
-    overflow:hidden;
+        renderProducts();
 
-    transition:.35s;
+    } catch (error) {
 
-    border:1px solid rgba(255,255,255,.08);
+        productList.innerHTML = `
+            <div class="empty">
+                Không thể tải sản phẩm.
+            </div>
+        `;
+
+        console.error(error);
+
+    }
 
 }
 
-.product:hover{
+// =========================
+// Render Products
+// =========================
 
-    transform:translateY(-8px);
+function renderProducts() {
 
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
+    let products = [...allProducts];
 
-}
+    // Lọc danh mục
 
-.product img{
+    if (currentCategory !== "all") {
 
-    width:100%;
+        products = products.filter(p =>
 
-    height:220px;
+            p.category === currentCategory
 
-    object-fit:cover;
+        );
 
-}
+    }
 
-.product-info{
+    // Tìm kiếm
 
-    padding:20px;
+    if (searchInput.value.trim() !== "") {
 
-}
+        const keyword = searchInput.value.toLowerCase();
 
-.product-info h3{
+        products = products.filter(p =>
 
-    font-size:22px;
+            p.name.toLowerCase().includes(keyword)
 
-    margin-bottom:10px;
+        );
 
-}
+    }
 
-.product-info p{
+    if (products.length === 0) {
 
-    color:#cbd5e1;
+        productList.innerHTML = `
+            <div class="empty">
+                Không có sản phẩm.
+            </div>
+        `;
 
-    margin-bottom:15px;
+        return;
 
-}
+    }
 
-.price{
+    productList.innerHTML = "";
 
-    color:#22c55e;
+    products.forEach(product => {
 
-    font-size:28px;
+        productList.innerHTML += `
 
-    font-weight:bold;
+        <div class="product-card">
 
-    margin-bottom:18px;
+            <span class="badge hot">
 
-}
+                HOT
 
-/* ===========================
-   BUTTON
-=========================== */
+            </span>
 
-.buy-btn{
+            <img src="${product.image}" alt="${product.name}">
 
-    width:100%;
+            <div class="product-body">
 
-    padding:14px;
+                <div class="stock">
 
-    border:none;
+                    ✔ Còn hàng
 
-    border-radius:14px;
+                </div>
 
-    background:#2563eb;
+                <h3 class="product-title">
 
-    color:white;
+                    ${product.name}
 
-    font-size:16px;
+                </h3>
 
-    font-weight:700;
+                <p class="product-desc">
 
-    cursor:pointer;
+                    ${product.description}
 
-    transition:.3s;
+                </p>
 
-}
+                <div class="price-box">
 
-.buy-btn:hover{
+                    <span class="price">
 
-    background:#1d4ed8;
+                        ${Number(product.price).toLocaleString()}đ
 
-}
+                    </span>
 
-.buy-btn:active{
+                </div>
 
-    transform:scale(.97);
+                <button class="buy-btn"
 
-}
+                    onclick="location.href='product.html?id=${product.id}'">
 
-/* ===========================
-   BADGE
-=========================== */
+                    🛒 Mua ngay
 
-.badge{
+                </button>
 
-    position:absolute;
+            </div>
 
-    top:15px;
+        </div>
 
-    left:15px;
+        `;
 
-    background:#ef4444;
-
-    color:white;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
-    font-size:13px;
-
-    font-weight:bold;
+    });
 
 }
 
-/* ===========================
-   LOADING
-=========================== */
+// =========================
+// Search
+// =========================
 
-.loading{
+if (searchInput) {
 
-    text-align:center;
-
-    padding:80px;
-
-    font-size:22px;
+    searchInput.addEventListener("input", renderProducts);
 
 }
 
-/* ===========================
-   EMPTY
-=========================== */
+// =========================
+// Category
+// =========================
 
-.empty{
+document.querySelectorAll(".filter-btn").forEach(btn => {
 
-    text-align:center;
+    btn.onclick = () => {
 
-    padding:80px;
+        document.querySelectorAll(".filter-btn")
 
-    color:#94a3b8;
+        .forEach(x => x.classList.remove("active"));
 
-}
+        btn.classList.add("active");
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+        currentCategory = btn.dataset.category;
 
-@media(max-width:768px){
+        renderProducts();
 
-.shop-header h1{
+    }
 
-font-size:34px;
+});
 
-}
+// =========================
 
-.shop-header{
-
-padding:50px 20px;
-
-}
-
-.product-grid{
-
-padding:40px 20px;
-
-grid-template-columns:1fr;
-
-}
-
-}
+loadProducts();
